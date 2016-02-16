@@ -1,0 +1,344 @@
+@font-face {
+    font-family: "NautilusPompiliusRegular";
+    src: url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.eot");
+    src: url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.eot?#iefix")format("embedded-opentype"),
+    url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.woff") format("woff"),
+    url("../fonts/NautilusPompiliusRegular/NautilusPompiliusRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+$breakpoints: (
+  'xs-phone': 320px,
+  'phone': 480px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'widescreen': 1200px
+);
+
+// keywords
+$media-expressions: (
+  'screen': 'screen',
+  'print': 'print',
+  'handheld': 'handheld',
+  'landscape': '(orientation: landscape)',
+  'portrait': '(orientation: portrait)',
+  'retina2x': '(-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)',
+  'retina3x': '(-webkit-min-device-pixel-ratio: 2.5), (min-resolution: 240dpi)'
+);
+
+// ligatured operators ≥ ≤
+
+@import 'vendors/include-media';
+
+@import "bootstrap-custom";
+@import "vendors/bootstrap/variables";
+@import "vendors/bootstrap/mixins";
+
+@import 'base/mixins';
+@import 'base/helpers';
+
+img {
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.holder {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  background: #fff;
+  padding: 10px 0;
+  border-bottom: solid 1px #002e46;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 80px;
+}
+
+.logo {
+  float: left;
+
+  a {
+
+    img {
+
+    }
+  }
+}
+
+.visual-box {
+  background: url(../images/background-1.jpg);
+  height: 100vh;
+  position: relative;
+  background-size: cover;
+  padding: 300px 0;
+  min-height: 400px;
+
+  @include media("<tablet"){ 
+    padding: 200px 0 100px;
+  }
+
+  @include media("<phone"){ 
+    padding: 150px 0 100px;
+  }
+}
+
+.main-title-box {
+  margin: 0 auto;
+  font-size: 16px;
+  max-width: 500px;
+
+  @include media("<tablet"){ 
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 40px;
+    margin: 0 0 20px;
+    letter-spacing: 1px;
+    font-family: "NautilusPompiliusRegular";
+
+    @include media("<tablet"){ 
+      font-size: 36px;
+    }
+
+    @include media("<phone"){ 
+      font-size: 30px;
+    }
+  }
+}
+
+.next-bottom-box {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    text-decoration: none;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+.two-containers-box {
+  padding: 100px 0;
+}
+
+
+.navigation {
+  position: relative;
+}
+
+.list-navigation {
+  padding: 15px 0 0;
+  margin: 0 -10px;
+  list-style: none;
+  float: right;
+  font-size: 17px;
+  letter-spacing: 1px;
+  font-family: "NautilusPompiliusRegular";
+
+  @include media("<tablet") {
+    display: block;
+    padding: 10px 0;
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 10px;
+
+    @include media("<tablet") {
+      display: block;
+      padding: 10px;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &.active {
+
+      a {
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -6px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: #889bac;
+
+          @include media("<tablet") {
+            display: none;
+          }
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      transition: opacity $animation-speed ease;
+      color: #002e46;
+      position: relative;
+
+      &:hover, 
+      &:focus {
+        opacity: 0.7;
+        transition: opacity $animation-speed ease;
+      }
+
+      &:hover {
+        text-decoration: none;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -6px;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: #889bac;
+
+          @include media("<tablet") {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  a {
+    display: block;
+  }
+
+  @include media("<tablet") {
+    top: -9999px;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: solid 1px #ccc;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+  }
+}
+
+.menu-on {
+
+  .list-navigation {
+
+   @include media("<tablet") {
+      top: 70px;
+      opacity: 1;
+      transition: all .3s ease;
+      -webkit-transition: all .3s ease;
+    }
+  }
+}
+
+.burger-menu {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  float: right;
+  display: none;
+  margin: 10px 0 0;
+
+  @include media("<tablet") {
+    display: block;
+  }
+}
+.burger {
+  position: absolute;
+  background: rgba(111,111,111,1);
+  width: 100%;
+  height: 5px;
+  top: 50%;
+  right: 0px;
+  margin-top: -5px;
+  opacity: 1;
+}
+.burger::before {
+  position: absolute;
+  background: rgba(111,111,111,1);
+  width: 40px;
+  height: 5px;
+  top: 15px;
+  content: "";
+  display: block;
+}
+.burger::after {
+  position: absolute;
+  background: rgba(111,111,111,1);
+  width: 40px;
+  height: 5px;
+  bottom: 15px;
+  content: "";
+  display: block;
+}
+.burger::after, .burger::before, .burger {
+  transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+}
+.menu-on .burger::after{
+   transform: rotate(-45deg);
+   -webkit-transform: rotate(-45deg);
+  bottom: 0px;
+}
+.menu-on .burger::before{
+   transform: rotate(45deg);
+   -webkit-transform: rotate(45deg);
+  top: 0px;
+}
+.menu-on .burger{
+ background: rgba(111,111,111,.0);
+}
+
+
+
+/* fluid 5 columns */
+.grid-sizer,
+.grid-item { 
+  width: 20%;
+  padding: 5px;
+  box-sizing: border-box;
+
+  @include media("<tablet") {
+    width: 25%;
+  }
+
+  @include media("<phone") {
+    width: 100%;
+  }
+}
+/* 2 columns wide */
+.grid-item--width2 { 
+  width: 40%; 
+  padding: 5px;
+  box-sizing: border-box;
+
+  @include media("<tablet") {
+    width: 50%;
+  }
+
+  @include media("<phone") {
+    width: 100%;
+  }
+}
